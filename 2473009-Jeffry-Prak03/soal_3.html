@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <form>
+        <fieldset style="width: 350px; padding: 20px;">
+            <h1 style="margin-top: 0;">Form Tambah Data User</h1>
+            <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td>Name</td>
+                    <td>: <input type="text" name="name" required
+                            oninvalid="this.setCustomValidity('Name is required!!!')" oninput="setCustomValidity('')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">Address</td>
+                    <td>: <input type="text" name="address" required
+                            oninvalid="this.setCustomValidity('Address is required!!!')"
+                            oninput="setCustomValidity('')"></td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>: <input type="email" name="email" required
+                            oninvalid="if(this.input==''){this.setCustomValidity('Harap isi bidang ini.')}else{this.setCustomValidity('Sertakan \'@\' pada alamat email ini. \'' + this.input + '\' tidak memiliki \'@\'')}"
+                            oninput="setCustomValidity('')"></td>
+                </tr>
+
+                <tr>
+                    <td>Homepage</td>
+                    <td>: <input type="text" name="homepage"></td>
+                </tr>
+
+                <tr>
+                    <td>Birthday</td>
+                    <td>: <input type="text" name="birthday" placeholder="hh/bb/tttt" required></td>
+                </tr>
+
+                <tr>
+                    <td>Favorite Color</td>
+                    <td>: <input type="color" name="color" value="#000000">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>IPK</td>
+                    <td>: <input type="number" name="ipk" step="0.1" min="0" max="4" value="0"></td>
+                </tr>
+
+                <tr>
+                    <td>Phone Number</td>
+                    <td>: <input type="text" name="phone" pattern="[0-9]{3}-[0-9]{7,10}"
+                            required title="Format: 3 angka - 7 sampai 10 angka (contoh: ###-####### sampai ###-##########)"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Add" style="text-align: center;">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    </table>
+</body>
+
+</html>
