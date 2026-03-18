@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009-Jeffry Leovandi Surjadi</title>
+    <style>
+        ul.outer {
+            list-style-image: url("img/sqpurple.gif");
+        }
+
+        ul.inner {
+            list-style-image: url("img/sqorange.gif");
+        }
+
+        ul.sub {
+            list-style-image: none;
+            list-style-type: none;
+        }
+
+        ul.sub li {
+            text-decoration: underline;
+        }
+
+        .orange {
+            color: #ff9900;
+            font-weight: bold;
+        }
+
+        ul.outer>li {
+            color: black;
+        }
+
+        ul.inner>li {
+            color: black;
+        }
+
+        ul.sub>li {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="outer">
+        <li>Coffee</li>
+        <li>Tea
+            <ul class="inner">
+                <li><span class="orange">Cold</span> Tea
+                    <ul class="sub">
+                        <li>Jasmine</li>
+                        <li>Green</li>
+                    </ul>
+                </li>
+                <li><span class="orange">Hot</span> Tea</li>
+            </ul>
+        </li>
+        <li>Coca Cola</li>
+    </ul>
+</body>
+
+</html>
