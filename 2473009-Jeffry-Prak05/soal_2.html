@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 2</title>
+
+    <style>
+        .wadah-utama {
+            position: relative;
+            height: 300px;
+            padding: 50px;
+        }
+
+        .gambar-lingkaran {
+            position: absolute;
+            width: 150px;
+            height: auto;
+        }
+
+        .merah-kiri {
+            left: 100px;
+            z-index: 1;
+        }
+
+        .ungu-tengah {
+            left: 190px;
+            z-index: 3;
+        }
+
+        .merah-kanan {
+            left: 280px;
+            z-index: 2;
+        }
+
+        .overlap-kiri {
+            left: 100px;
+            z-index: 4;
+        }
+
+        .overlap-kanan {
+            left: 280px;
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wadah-utama">
+        <img src="src/circle-red.png" class="gambar-lingkaran merah-kiri" alt="Lingkaran Merah 1">
+        <img src="src/circle-purple.png" class="gambar-lingkaran ungu-tengah" alt="Lingkaran Ungu">
+        <img src="src/circle-red.png" class="gambar-lingkaran merah-kanan" alt="Lingkaran Merah 2">
+
+        <img src="src/circle-red-half.png" class="gambar-lingkaran overlap-kiri" alt="Potongan Merah Kiri">
+        <img src="src/circle-red-half.png" class="gambar-lingkaran overlap-kanan" alt="Potongan Merah Kanan">
+    </div>
+
+</body>
+
+</html>
