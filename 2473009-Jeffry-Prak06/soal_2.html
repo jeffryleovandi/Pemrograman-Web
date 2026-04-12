@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 15px;
+        }
+
+        table,
+        td {
+            border: 1px solid black;
+            padding: 7px;
+            text-align: left;
+            font-size: 18px;
+            min-width: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="tbl">
+        <script type="text/javascript">
+            var angka;
+            var benar = false;
+
+            while (benar == false) {
+                angka = prompt("A number?");
+                if (angka != null && angka != "" && !isNaN(angka)) {
+                    benar = true;
+                }
+            }
+
+            var n = parseInt(angka);
+            var baris = "";
+
+            for (var i = 1; i <= n; i++) {
+                baris = baris + "<tr>";
+                baris = baris + "<td>" + i + "</td>";
+                baris = baris + "<td>x</td>";
+                baris = baris + "<td>" + n + "</td>";
+                baris = baris + "<td>=</td>";
+                baris = baris + "<td>" + (i * n) + "</td>";
+                baris = baris + "</tr>";
+            }
+
+            document.getElementById("tbl").innerHTML = baris;
+        </script>
+    </table>
+</body>
+
+</html>

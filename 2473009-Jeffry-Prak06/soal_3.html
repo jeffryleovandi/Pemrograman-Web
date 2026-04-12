@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .input-area {
+            border: 1px solid #999;
+            padding: 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 5px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #999;
+            padding: 3px;
+            width: 80px;
+        }
+
+        button {
+            padding: 3px 10px;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function proses() {
+            var tinggi = document.getElementById("tinggi").value;
+            
+            var n = parseInt(tinggi);
+            var isi = "";
+            
+            var lebarTabel = 800;
+            var tinggiTabel = 600;
+            var jumlahKolom = (2 * n) - 1;
+            
+            var w = lebarTabel / jumlahKolom;
+            var h = tinggiTabel / n;
+
+            isi += "<table width='" + lebarTabel + "' height='" + tinggiTabel + "' border='0' cellspacing='0' cellpadding='0'>";
+
+            for (var i = 1; i <= n; i++) {
+                isi += "<tr>";
+                
+                var kosong = n - i;
+                var kotakOranye = (2 * i) - 1;
+
+                for (var j = 1; j <= jumlahKolom; j++) {
+                    if (j <= kosong || j > (kosong + kotakOranye)) {
+                        isi += "<td width='" + w + "' height='" + h + "'></td>";
+                    } else {
+                        isi += "<td width='" + w + "' height='" + h + "' bgcolor='orange' style='border: 1px solid white;'></td>";
+                    }
+                }
+                
+                isi += "</tr>";
+            }
+
+            isi += "</table>";
+            document.getElementById("output").innerHTML = isi;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="input-area">
+        <label>Tinggi Piramida:</label>
+        <input type="text" id="tinggi" /><br />
+        <button onclick="proses()">proses</button>
+    </div>
+    
+    <div id="output">
+        </div>
+</body>
+
+</html>

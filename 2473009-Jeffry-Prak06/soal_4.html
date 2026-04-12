@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            padding: 4px;
+            border: 1px solid #444;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 20px;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 8px;
+            border: 1px solid #999;
+            width: 380px;
+            line-height: 1.6;
+        }
+
+        td {
+            padding: 3px 10px;
+            border: 1px solid #999;
+        }
+
+        td:first-child {
+            text-align: right;
+            width: 30%;
+        }
+
+        label {
+            font-weight: bold;
+            color: blue;
+        }
+
+        input[type="text"] {
+            border: 1px solid #999;
+            padding: 2px 7px;
+            width: 80%;
+        }
+
+        select {
+            padding: 4px;
+            width: 70%;
+            text-align: center;
+        }
+
+        button {
+            padding: 4px 12px;
+            margin-right: 5px;
+            color: blue;
+        }
+    </style>
+    <script type="text/javascript">
+        function proses() {
+            var input = document.getElementById("inputVal").value;
+            var mode = document.getElementById("mode").value;
+            var hasil = "";
+
+            if (mode == "decimal-biner") {
+                if (input == "" || isNaN(input) || input < 0 || input > 255) {
+                    alert("Input harus angka 0 sampai 255!");
+                } else {
+                    var angka = parseInt(input);
+                    if (angka == 0) {
+                        hasil = "00000000";
+                    } else {
+                        while (angka > 0) {
+                            hasil = (angka % 2) + hasil;
+                            angka = Math.floor(angka / 2);
+                        }
+                        while (hasil.length < 8) {
+                            hasil = "0" + hasil;
+                        }
+                    }
+                    document.getElementById("outputVal").value = hasil;
+                }
+            } else {
+                var binerBenar = true;
+                if (input.length != 8) {
+                    binerBenar = false;
+                } else {
+                    for (var i = 0; i < input.length; i++) {
+                        if (input.charAt(i) != "0" && input.charAt(i) != "1") {
+                            binerBenar = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (binerBenar == false) {
+                    alert("Input harus angka 0 atau 1 sebanyak 8 digit!");
+                } else {
+                    var desimal = 0;
+                    var pangkat = 0;
+                    for (var j = input.length - 1; j >= 0; j--) {
+                        if (input.charAt(j) == "1") {
+                            var nilaiPangkat = 1;
+                            for (var k = 0; k < pangkat; k++) {
+                                nilaiPangkat = nilaiPangkat * 2;
+                            }
+                            desimal = desimal + nilaiPangkat;
+                        }
+                        pangkat++;
+                    }
+                    document.getElementById("outputVal").value = desimal;
+                }
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("inputVal").value = "";
+            document.getElementById("outputVal").value = "";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td><label>Input :</label></td>
+                <td><input type="text" id="inputVal" /></td>
+            </tr>
+            <tr>
+                <td><label>Output :</label></td>
+                <td><input type="text" id="outputVal" readonly /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <select id="mode">
+                        <option value="decimal-biner">decimal-biner</option>
+                        <option value="biner-decimal">biner-decimal</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <button onclick="proses()">PROSES</button>
+                    <button onclick="resetForm()">RESET</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

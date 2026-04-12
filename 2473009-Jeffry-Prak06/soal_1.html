@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+        }
+
+        .container {
+            border: 1px solid #999;
+            padding: 12px;
+            display: inline-block;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 9px;
+            border: 2px solid #444;
+        }
+
+        td {
+            border: 2px solid #444;
+            padding: 5px 15px;
+            text-align: center;
+            font-size: 28px;
+            min-width: 35px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #999;
+            padding: 2px;
+            width: 95px;
+            line-height: 1.2;
+            font-size: 11px;
+        }
+
+        label {
+            display: inline-block;
+            width: 138px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            margin-bottom: -5px;
+        }
+
+        button {
+            margin-top: 8px;
+            padding: 3px 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        function count() {
+            var angka1 = document.getElementById("num1").value;
+            var angka2 = document.getElementById("num2").value;
+
+            if ((angka1 == "" || isNaN(angka1)) && (angka2 == "" || isNaN(angka2))) {
+                alert("angka pertama dan kedua harus angka.");
+            }
+            else if (angka1 == "" || isNaN(angka1)) {
+                alert("angka pertama bukan angka.");
+            }
+            else if (angka2 == "" || isNaN(angka2)) {
+                alert("angka kedua harus angka.");
+            } 
+            else {
+                    var a = parseInt(angka1);
+                    var b = parseInt(angka2);
+
+                    var hasilTambah = a + b;
+                    var hasilKurang = a - b;
+
+                    document.getElementById("td_a1").innerHTML = a;
+                    document.getElementById("td_b1").innerHTML = b;
+                    document.getElementById("td_sum").innerHTML = hasilTambah;
+
+                    document.getElementById("td_a2").innerHTML = a;
+                    document.getElementById("td_b2").innerHTML = b;
+                    document.getElementById("td_diff").innerHTML = hasilKurang;
+                }
+            }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <label>Angka Pertama &nbsp;&nbsp;:</label>
+        <input type="text" id="num1" /><br />
+        <label>Angka Kedua &nbsp;&nbsp;&nbsp;&nbsp;:</label>
+        <input type="text" id="num2" /><br />
+        <button onclick="count()">Count</button>
+
+        <table>
+            <tr>
+                <td id="td_a1"></td>
+                <td>+</td>
+                <td id="td_b1"></td>
+                <td>=</td>
+                <td id="td_sum"></td>
+            </tr>
+            <tr>
+                <td id="td_a2"></td>
+                <td>-</td>
+                <td id="td_b2"></td>
+                <td>=</td>
+                <td id="td_diff"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
