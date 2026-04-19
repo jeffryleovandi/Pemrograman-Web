@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 1</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .kotak-luar {
+            border: 1px solid #999;
+            padding: 20px;
+            background-color: #ffffff;
+            width: 350px;
+            margin: 50px auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .input-teks {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 2px;
+        }
+
+        .area-deskripsi {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        .hitung-char {
+            border: none;
+            text-align: right;
+            background: none;
+            width: 100%;
+            font-size: 12px;
+            color: #333;
+        }
+    </style>
+
+    <script>
+        function hitungKarakter() {
+            var batasMaksimal = 256;
+            var areaTeks = document.getElementById("deskripsi");
+            var infoHitung = document.getElementById("txt_hitung");
+
+            var panjangSekarang = areaTeks.value.length;
+
+            if (panjangSekarang > batasMaksimal) {
+                areaTeks.value = areaTeks.value.substring(0, batasMaksimal);
+                panjangSekarang = batasMaksimal;
+            }
+
+            infoHitung.value = panjangSekarang + "/" + batasMaksimal;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="kotak-luar">
+        <table border="0" cellspacing="5">
+            <tr>
+                <td>Judul</td>
+                <td>:</td>
+                <td><input type="text" id="judul" class="input-teks"></td>
+            </tr>
+            <tr>
+                <td valign="top">Deskripsi</td>
+                <td valign="top">:</td>
+                <td>
+                    <textarea id="deskripsi" class="area-deskripsi" onkeyup="hitungKarakter()"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="text" id="txt_hitung" value="0/256" readonly class="hitung-char">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

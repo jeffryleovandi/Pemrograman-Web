@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi - Soal 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            background: white;
+            margin: 50px auto;
+        }
+
+        th,
+        td {
+            padding: 8px 20px;
+            border: 1px solid #aaa;
+        }
+
+        th {
+            background-color: #a6bca9;
+        }
+
+        .c_ganjil {
+            background-color: #a1cdff;
+        }
+
+        .c_genap {
+            background-color: #ffc9a5;
+        }
+
+        .c_hover {
+            background-color: #CCFFAA;
+        }
+    </style>
+
+    <script>
+        function f_over(baris) {
+            baris.className = "c_hover";
+        }
+
+        function f_out(baris, namaClass) {
+            baris.className = namaClass;
+        }
+    </script>
+</head>
+
+<body>
+
+    <table border="1">
+        <tr>
+            <th>Position</th>
+            <th>Programming Language</th>
+            <th>Ratings</th>
+        </tr>
+
+        <tr class="c_ganjil" onmouseover="f_over(this)" onmouseout="f_out(this, 'c_ganjil')">
+            <td>1</td>
+            <td>C</td>
+            <td>18.058%</td>
+        </tr>
+
+        <tr class="c_genap" onmouseover="f_over(this)" onmouseout="f_out(this, 'c_genap')">
+            <td>2</td>
+            <td>Java</td>
+            <td>18.051%</td>
+        </tr>
+
+        <tr class="c_ganjil" onmouseover="f_over(this)" onmouseout="f_out(this, 'c_ganjil')">
+            <td>3</td>
+            <td>C++</td>
+            <td>9.707%</td>
+        </tr>
+
+        <tr class="c_genap" onmouseover="f_over(this)" onmouseout="f_out(this, 'c_genap')">
+            <td>4</td>
+            <td>PHP</td>
+            <td>9.662%</td>
+        </tr>
+
+        <tr class="c_ganjil" onmouseover="f_over(this)" onmouseout="f_out(this, 'c_ganjil')">
+            <td>5</td>
+            <td>(Visual) Basic</td>
+            <td>6.392%</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473009 - Jeffry Leovandi Surjadi Soal 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            border: 1px solid #999;
+            padding: 15px;
+            background: white;
+            width: 320px;
+            margin: 50px auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        .label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 150px;
+        }
+    </style>
+    <script>
+        var dataArray = new Array();
+
+        function addData() {
+            var input = document.getElementById("txtData").value;
+
+            if (input != "") {
+                dataArray.push(parseFloat(input));
+
+                document.getElementById("txtData").value = "";
+                document.getElementById("cbOperasi").selectedIndex = 0;
+            } else {
+                alert("Data tidak boleh kosong");
+            }
+        }
+
+        function prosesOperasi() {
+            var menu = document.getElementById("cbOperasi").value;
+            var hasil = "";
+
+            if (menu == "display") {
+                hasil = dataArray;
+            }
+            else if (menu == "count") {
+                hasil = dataArray.length;
+            }
+            else if (menu == "sum") {
+                var total = 0;
+                for (var i = 0; i < dataArray.length; i++) {
+                    total += dataArray[i];
+                }
+                hasil = total;
+            }
+            else if (menu == "average") {
+                var total = 0;
+                for (var i = 0; i < dataArray.length; i++) {
+                    total += dataArray[i];
+                }
+                hasil = total / dataArray.length;
+            }
+            else if (menu == "max") {
+                var tertinggi = dataArray[0];
+                for (var i = 1; i < dataArray.length; i++) {
+                    if (dataArray[i] > tertinggi) {
+                        tertinggi = dataArray[i];
+                    }
+                }
+                hasil = tertinggi;
+            }
+            else if (menu == "min") {
+                var terendah = dataArray[0];
+                for (var i = 1; i < dataArray.length; i++) {
+                    if (dataArray[i] < terendah) {
+                        terendah = dataArray[i];
+                    }
+                }
+                hasil = terendah;
+            }
+            else if (menu == "ganjil") {
+                var tampung = new Array();
+                for (var i = 0; i < dataArray.length; i++) {
+                    if (dataArray[i] % 2 != 0) {
+                        tampung.push(dataArray[i]);
+                    }
+                }
+                hasil = tampung;
+            }
+            else if (menu == "genap") {
+                var tampung = new Array();
+                for (var i = 0; i < dataArray.length; i++) {
+                    if (dataArray[i] % 2 == 0) {
+                        tampung.push(dataArray[i]);
+                    }
+                }
+                hasil = tampung;
+            }
+            else if (menu == "hapus") {
+                dataArray = new Array();
+                hasil = "";
+            }
+
+            document.getElementById("txtHasil").value = hasil;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="label">Data</td>
+                <td><input type="text" id="txtData"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Add" onclick="addData()">
+                </td>
+                <td>
+                    <select id="cbOperasi" onchange="prosesOperasi()">
+                        <option value="0">Pilih Operasi</option>
+                        <option value="display">Display</option>
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="average">Average</option>
+                        <option value="max">Max</option>
+                        <option value="min">Min</option>
+                        <option value="ganjil">Ganjil</option>
+                        <option value="genap">Genap</option>
+                        <option value="hapus">Hapus</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Hasil</td>
+                <td><input type="text" id="txtHasil" readonly></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
