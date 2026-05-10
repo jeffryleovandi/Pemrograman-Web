@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> 2473009 - Jeffry Leovandi Surjadi - Soal 3 </title>
+    <style>
+        button {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        div {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            float: left;
+            border: 2px blue solid;
+            text-align: center;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <button>Change colors</button>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("div").click(function () {
+                $(this).css("background-color", "red").attr("id", "red-box");
+            });
+
+            $("button").click(function () {
+                $("div").each(function (index, domEle) {
+                    if ($(domEle).attr("id") === "red-box") {
+                        return false;
+                    }
+                    $(domEle).css("background-color", "yellow");
+                });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

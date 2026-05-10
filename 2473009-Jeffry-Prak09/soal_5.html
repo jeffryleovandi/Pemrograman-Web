@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> 2473009 - Jeffry Leovandi Surjadi - Soal 5 </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            border: 1px solid #999;
+            width: 300px;
+            padding: 10px;
+        }
+
+        #searchField {
+            width: 260px;
+            padding: 4px;
+            margin-bottom: 10px;
+            border: 1px solid #999;
+            font-size: 14px;
+            display: block;
+        }
+
+        .company {
+            font-size: 14px;
+            padding: 2px 0;
+            color: black;
+        }
+
+        .company.highlight {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" id="searchField"/>
+
+        <div class="company">Sun Microsystem</div>
+        <div class="company">Apache Software Foundation</div>
+        <div class="company">Oracle Coorporation</div>
+        <div class="company">International Bussiness Machines</div>
+        <div class="company">Microsoft Coorporation</div>
+        <div class="company">Apple Inc</div>
+        <div class="company">Sap Ag</div>
+        <div class="company">Accenture</div>
+        <div class="company">Computer Sciences Coorporation</div>
+        <div class="company">Google</div>
+        <div class="company">Softbank</div>
+        <div class="company">Yahoo</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#searchField").keyup(function () {
+                var keyword = $(this).val();
+
+                $("div.company").css("color", "black");
+
+                if (keyword.trim() !== "") {
+                    $("div.company:contains('" + keyword + "')").css("color", "red");
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

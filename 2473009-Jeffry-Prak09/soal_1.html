@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> 2473009 - Jeffry Leovandi Surjadi - Soal 1 </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        ol.menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        ol.menu>li.item {
+            position: relative;
+            padding: 5px 10px;
+            border: 2px solid #ff69b4;
+            background-color: #ff69b4;
+            cursor: pointer;
+            width: 130px;
+            box-sizing: border-box;
+        }
+
+        ol.menu>li.item>a {
+            color: white;
+            text-decoration: underline;
+            font-weight: normal3;
+            font-size: 14px;
+        }
+
+        li.item ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 100%;
+            left: -2px; 
+            background-color: white;
+            border: 2px solid #ff69b4;
+            width: 130px;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+
+        li.item ol li {
+            padding: 3px 8px;
+            background-color: white;
+        }
+
+        li.item ol li a {
+            color: black;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        li.item ol li:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ol class="menu">
+        <li class="item">
+            <a href="#">jQuery</a>
+            <ol>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Blog</a></li>
+            </ol>
+        </li>
+        <li class="item">
+            <a href="#">Community</a>
+            <ol>
+                <li><a href="#">Mailing List</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Demos</a></li>
+                <li><a href="#">Plugins</a></li>
+            </ol>
+        </li>
+        <li class="item">
+            <a href="#">Development</a>
+            <ol>
+                <li><a href="#">Source Code</a></li>
+                <li><a href="#">Bug Tracking</a></li>
+                <li><a href="#">Recent Changes</a></li>
+            </ol>
+        </li>
+    </ol>
+
+    <script>
+        $(document).ready(function () {
+            $("li.item ol").hide();
+
+            $("li.item").hover(
+                function () {
+                    $(this).find("ol").show();
+                },
+                function () {
+                    $(this).find("ol").hide();
+                }
+            );
+        });
+    </script>
+
+</body>
+
+</html>

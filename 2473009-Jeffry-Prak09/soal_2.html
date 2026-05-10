@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> 2473009 - Jeffry Leovandi Surjadi - Soal 2 </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            border: 1px solid #999;
+            width: 320px;
+            padding: 6px;
+        }
+
+        .top-row {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        #inputNama {
+            flex: 1;
+            padding: 3px;
+            border: 1px solid #999;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 3px 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .nama {
+            font-size: 14px;
+            padding: 1px 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="top-row">
+            <input type="text" id="inputNama"/>
+            <button id="btnAdd">Add</button>
+            <button id="btnSearch">Search</button>
+        </div>
+
+        <div class="nama">John Resig</div>
+        <div class="nama">George Martin</div>
+        <div class="nama">Malcom John Sinclair</div>
+        <div class="nama">J. Ohn</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#btnAdd").click(function () {
+                var nama = $("#inputNama").val();
+                if (nama.trim() !== "") {
+                    $("div.nama").css("text-decoration", "none");
+                    $("<div class='nama'>" + nama + "</div>").appendTo(".container");
+                    $("#inputNama").val("");
+                }
+            });
+
+            $("#btnSearch").click(function () {
+                var keyword = $("#inputNama").val();
+
+                $("div.nama").css("text-decoration", "none");
+
+                if (keyword.trim() !== "") {
+                    $("div.nama:contains('" + keyword + "')").css("text-decoration", "underline");
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
