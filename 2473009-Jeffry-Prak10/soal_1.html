@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> 2473009 - Jeffry Leovandi Surjadi - Soal 1 </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            border: 1px solid #000;
+            padding: 15px;
+            width: 500px;
+        }
+
+        .header {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .radio-group {
+            margin-bottom: 10px;
+        }
+
+        .radio-group label {
+            display: block;
+            margin: 4px 0;
+        }
+
+        input[type="button"] {
+            margin-top: 5px;
+            padding: 2px 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        table th {
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #000;
+            padding: 4px 8px;
+            text-align: left;
+        }
+
+        table td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+        }
+
+        table tr.even td {
+            background-color: #FFFFCC;
+        }
+
+        table tr.odd td {
+            background-color: #CCFFAA;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            Selamat! Berikut adalah Daftar Mahasiswa yang mendapat<br>
+            Nilai A Pemograman Web SI Tahun Ajaran 2023/2024
+        </div>
+
+        <div class="radio-group">
+            <label><input type="radio" name="kelas" value="all" checked> All</label>
+            <label><input type="radio" name="kelas" value="A"> Kelas A</label>
+            <label><input type="radio" name="kelas" value="B"> Kelas B</label>
+        </div>
+
+        <input type="button" id="btnSearch" value="Search">
+
+        <table id="tblHasil">
+            <thead>
+                <tr>
+                    <th>NRP</th>
+                    <th>NAMA</th>
+                    <th>KELAS</th>
+                    <th>NILAI AKHIR</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyHasil">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="nilai.js"></script>
+    <script src="nilaiA.js" id="scriptA"></script>
+    <script src="nilaiB.js" id="scriptB"></script>
+
+    <script>
+        var dataAll = [
+            {"nrp":"1273001","nama":"Zena Vilenia","nilaiakhir":"89","kelas":"A"},
+            {"nrp":"1273008","nama":"Reagen Natalie","nilaiakhir":"88","kelas":"B"},
+            {"nrp":"0873037","nama":"Marco Kornelius","nilaiakhir":"84","kelas":"A"},
+            {"nrp":"1273002","nama":"Louis Jupiter","nilaiakhir":"84","kelas":"A"},
+            {"nrp":"1273009","nama":"Welly Candra","nilaiakhir":"84","kelas":"B"},
+            {"nrp":"1273010","nama":"Ingrid Listiyani","nilaiakhir":"83","kelas":"B"},
+            {"nrp":"1173029","nama":"Prima Baraq","nilaiakhir":"83","kelas":"B"},
+            {"nrp":"0873063","nama":"Wilfandi Aser","nilaiakhir":"82","kelas":"B"},
+            {"nrp":"1273005","nama":"Tiffani","nilaiakhir":"81","kelas":"A"},
+            {"nrp":"1273011","nama":"Florrentia Steffani","nilaiakhir":"81","kelas":"B"},
+            {"nrp":"1273003","nama":"Yogi Prawiradidja","nilaiakhir":"81","kelas":"A"},
+            {"nrp":"1073044","nama":"Anthony Harun","nilaiakhir":"81","kelas":"B"},
+            {"nrp":"1273006","nama":"Lucky Aditya","nilaiakhir":"80","kelas":"A"},
+            {"nrp":"1273004","nama":"Mulyadi","nilaiakhir":"80","kelas":"A"}
+        ];
+
+        var dataA = dataAll.filter(function (m) { return m.kelas === "A"; });
+        var dataB = dataAll.filter(function (m) { return m.kelas === "B"; });
+
+        function tampilkanData(data) {
+            var tbody = $("#tbodyHasil");
+            tbody.empty();
+
+            $.each(data, function (index, mhs) {
+                var row = $("<tr>");
+                row.append($("<td>").text(mhs.nrp));
+                row.append($("<td>").text(mhs.nama));
+                row.append($("<td>").text(mhs.kelas));
+                row.append($("<td>").text(mhs.nilaiakhir));
+                tbody.append(row);
+            });
+
+            $("#tbodyHasil tr:odd").addClass("odd");
+            $("#tbodyHasil tr:even").addClass("even");
+        }
+
+        $("#btnSearch").click(function () {
+            var kelasSelected = $(":radio[name='kelas']:checked").val();
+
+            if (kelasSelected === "all") {
+                $.getJSON("nilai.js", function (data) {
+                    tampilkanData(data.mahasiswa);
+                }).fail(function () {
+                    tampilkanData(dataAll);
+                });
+            } else if (kelasSelected === "A") {
+                $.getJSON("nilaiA.js", function (data) {
+                    tampilkanData(data.mahasiswa);
+                }).fail(function () {
+                    tampilkanData(dataA);
+                });
+            } else if (kelasSelected === "B") {
+                $.getJSON("nilaiB.js", function (data) {
+                    tampilkanData(data.mahasiswa);
+                }).fail(function () {
+                    tampilkanData(dataB);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

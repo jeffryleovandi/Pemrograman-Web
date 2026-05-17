@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> 2473009 - Jeffry Leovandi Surjadi - Soal 2 </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .form-container {
+            border: 1px solid #999;
+            padding: 10px;
+            width: 420px;
+            margin-bottom: 8px;
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 3px 5px;
+            display: block;
+            border: 1px solid #999;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        input[type="button"] {
+            padding: 2px 10px;
+            margin-top: 4px;
+        }
+
+        #hasilContainer {
+            border: 1px solid #999;
+            width: 600px;
+            padding: 10px;
+            display: none;
+            margin-bottom: 8px;
+            box-sizing: border-box;
+        }
+
+        .portal-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #999;
+            padding-bottom: 8px;
+        }
+
+        .portal-title a {
+            color: #0000CC;
+            text-decoration: underline;
+        }
+
+        .item-entry {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+        }
+
+        .item-entry .item-title a {
+            color: #0000CC;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .item-entry .item-meta {
+            font-size: 13px;
+            margin: 2px 0 8px 0;
+        }
+
+        .item-entry .item-meta em {
+            font-style: italic;
+        }
+
+        .item-entry .item-desc {
+            font-size: 13px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .item-entry .item-univ {
+            font-size: 13px;
+        }
+
+        .item-entry .item-univ a {
+            color: #0000CC;
+            text-decoration: underline;
+        }
+
+        .item-entry .item-tags {
+            font-size: 13px;
+        }
+
+        .portal-footer {
+            font-size: 13px;
+            margin-top: 6px;
+            border-top: 1px solid #999;
+            padding-top: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <input type="text" id="txtTitle" value="Title" readonly>
+        <input type="text" id="txtContent" value="Content" readonly>
+        <input type="text" id="txtGenerator" value="Generator" readonly>
+        <input type="button" id="btnLook" value="Look">
+    </div>
+
+    <div id="hasilContainer">
+        <div class="portal-title" id="portalTitle"></div>
+        <div id="itemList"></div>
+        <div class="portal-footer" id="portalFooter"></div>
+    </div>
+
+    <input type="button" id="btnLook2" value="Look" style="display:none;">
+
+    <script>
+        var SIJson = {
+            "title": "Portal S1-Sistem Informasi",
+            "link": "http://si.itmaranatha.org",
+            "generator": "S1-SI FIT UKM",
+            "items": [
+                {
+                    "title": "BIE02 - Pemrograman Web",
+                    "link": "https://morning.maranatha.edu/course/view.php?id=4245",
+                    "universitas": { "m": "http://www.itmaranatha.org/" },
+                    "description": "Matakuliah ini akan mengenalkan dan mengajarkan mahasiswa tentang dasar-dasar dalam pemrograman web. Di sini mahasiswa akan mempelajari penulisan tag-tag HTML sebagai pembentuk dasar dari suatu halaman web, mahasiswa juga akan mempelajari CSS sebagai pelengkap fungsionalitas dari HTML.<br/>Selain itu mahasiswa juga akan mempelajari pemrograman web di sisi klien (client side scripting) dengan menggunakan Java Script. Dan sebagai pengenalan teknologi baru, mahasiswa juga akan mempelajari sekilas mengenai teknologi JQuery dan teknologi JSON.",
+                    "published": "01-January-2023",
+                    "author": "Dosen S1-SI",
+                    "tags": "S1-Sistem Informasi, Pemrograman Web"
+                },
+                {
+                    "title": "IS407 - Basis Data 2",
+                    "link": "http://si.itmaranatha.org/index.php/is407-basis-data-2",
+                    "universitas": { "m": "http://www.itmaranatha.org/" },
+                    "description": "Mata kuliah ini mengajarkan kepada mahasiswa bahasa pemrograman SQL yang meliputi : Perintah SQL untuk mengambil data dari tabel dan mengurutkan data, fungsi-fungsi yang terdapat pada oracle seperti fungsi tanggal dll, Join table, Operasi DDL, DML, Constraint, Subquery, View, Index dan PL/SQL.",
+                    "published": "01-January-2023",
+                    "author": "Dosen S1-SI",
+                    "tags": "S1-Sistem Informasi, Basis Data 2"
+                }
+            ]
+        };
+
+        function tampilkanHasil() {
+            $("#portalTitle").empty();
+            $("#itemList").empty();
+            $("#portalFooter").empty();
+
+            $("#portalTitle").html(
+                '<a href="' + SIJson.link + '" target="_blank">' + SIJson.title + '</a>'
+            );
+
+            $.each(SIJson.items, function (index, item) {
+                var itemHtml = '<div class="item-entry">';
+
+                itemHtml += '<div class="item-title"><a href="' + item.link + '" target="_blank">' + item.title + '</a></div>';
+                itemHtml += '<div class="item-meta">By : ' + item.author + ' / <em>' + item.published + '</em></div>';
+                itemHtml += '<div class="item-desc">' + item.description + '</div>';
+                itemHtml += '<div class="item-univ">Universitas : <a href="' + item.universitas.m + '" target="_blank">Click Here</a></div>';
+                itemHtml += '<div class="item-tags">Tag(s) : ' + item.tags + '</div>';
+
+                itemHtml += '</div>';
+                $("#itemList").append(itemHtml);
+            });
+
+            $("#portalFooter").text("\u00A9" + SIJson.generator);
+
+            $("#hasilContainer").show();
+            $("#btnLook2").show();
+        }
+
+        $("#btnLook").click(function () {
+            tampilkanHasil();
+        });
+
+        $("#btnLook2").click(function () {
+            tampilkanHasil();
+        });
+    </script>
+
+</body>
+
+</html>
